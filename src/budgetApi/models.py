@@ -19,7 +19,7 @@ class Transaction(models.Model):
     name = models.CharField(max_length=100)
     amount = models.IntegerField()
     type = models.CharField(max_length=1, choices=TYPE_OF_FLOW)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name="transactions")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="transactions")
 
 

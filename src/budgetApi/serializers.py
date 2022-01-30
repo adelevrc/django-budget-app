@@ -5,9 +5,17 @@ from budgetApi.models import Category, Transaction
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    transactions = serializers.SerializerMethodField()
+    print(transactions)
+
     class Meta:
         model = Category
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'name', 'description', 'transactions']
+
+    def get_transactions(self, instance):
+        queryset = instance.transactions
+        serializer = TransactionSerializer(queryset, many=True)
+        return serializer.data
 
     def validate_name(self, value):
         if Category.objects.filter(name=value).exists():
