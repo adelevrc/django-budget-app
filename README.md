@@ -1,5 +1,5 @@
 # Fake budget app with Django Rest Framework
-
+The only app you need to save money !
 ## Start : 
 ### 1 -Install dependencies :
 ```bash
